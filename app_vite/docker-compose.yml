@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  app_vite:
+    container_name: app_vite
+    build: .
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/usr/src/vite
+      - /usr/src/vite/node_modules
+    env_file:
+      - .env
+    command: /bin/sh -c "while sleep 1000; do :; done;"
+    networks:
+      - network1
+networks:
+  network1:
+    name: mi_red
+    external: true
